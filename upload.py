@@ -26,7 +26,7 @@ def upload_with_progress(file_path, url):
             print('File uploaded successfully')
             update_cookies_request()
         else:
-            print('File upload failed')
+            print(f'File upload failed with code : {response2.status_code}')
     print("Upload completed.")
 
 if __name__ == "__main__":
