@@ -11,12 +11,18 @@ def upload_with_progress(file_path, url):
 
     with open(file_path, 'rb') as f:
         with requests.post(url, data=f, stream=True, verify=False) as response:
-            response.raise_for_status()
-            for chunk in response.iter_content(chunk_size=8192):
-                uploaded_size += len(chunk)
-                percent_complete = (uploaded_size / total_size) * 100
-                print(f"Uploading: {percent_complete:.2f}% complete", end='\r', flush=True)
+            try:
+                response.raise_for_status()
+                for chunk in response.iter_content(chunk_size=8192):
+                    uploaded_size += len(chunk)
+                    percent_complete = (uploaded_size / total_size) * 100
+                    print(f"Uploading: {percent_complete:.2f}% complete", end='\r', flush=True)
 
+                print("Upload completed.")
+            except requests.exceptions.HTTPError as e:
+                print("Upload failed. HTTP Error:")
+                print(e)
+                print(response.text)
     print("Upload completed.")
 
 if __name__ == "__main__":
