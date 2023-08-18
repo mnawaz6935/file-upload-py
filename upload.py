@@ -5,7 +5,7 @@ FILE_PATH = r'e:\Dashboard_comlpeted_v1\Dashboard (2).zip'
 ENDPOINT_URL = 'https://3.135.156.101:8091/upload_file/'
 
 def upload_with_progress(file_path, url):
-    print(f'Files Exists: {os.path.Exists(file_path)}')
+    print(f'Files Exists: {os.path.exists(file_path)}')
     total_size = os.path.getsize(file_path)
     print(f'File Size: {total_size}')
     uploaded_size = 0
