@@ -8,9 +8,9 @@ def upload_with_progress(file_path, url):
     total_size = os.path.getsize(file_path)
     print(f'File Size: {total_size}')
     uploaded_size = 0
-
-    with open(file_path, 'rb') as f:
-        with requests.post(url, data=f, stream=True, verify=False) as response:
+    headers = {'Content-Type': 'multipart/form-data'}
+    with open(file_path, 'rb', encoding='utf-8') as f:
+        with requests.post(url, data=f, headers=headers, stream=True, verify=False) as response:
             try:
                 response.raise_for_status()
                 for chunk in response.iter_content(chunk_size=8192):
