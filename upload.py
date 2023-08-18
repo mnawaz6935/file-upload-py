@@ -6,6 +6,7 @@ ENDPOINT_URL = 'https://3.135.156.101:8091/upload_file/'
 
 def upload_with_progress(file_path, url):
     total_size = os.path.getsize(file_path)
+    print(f'File Size: {total_size}')
     uploaded_size = 0
 
     with open(file_path, 'rb') as f:
