@@ -3,7 +3,7 @@ import requests
 from tqdm import tqdm
 from pathlib import Path
 
-FILE_PATH = r'e:\Dashboard_comlpeted_v1\Dashboard (2).zip'
+FILE_PATH = r'e:\Dashboard_comlpeted_v1\Dashboard\dashboard.zip'
 ENDPOINT_URL = 'https://3.135.156.101:8091/upload_file/'
 
 def upload_with_progress(file_path, url):
