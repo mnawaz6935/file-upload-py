@@ -2,7 +2,7 @@ import os
 import requests
 
 FILE_PATH = r'e:\Dashboard_comlpeted_v1\Dashboard (2).zip'
-ENDPOINT_URL = 'https://3.135.156.101:8091/upload_file'
+ENDPOINT_URL = 'https://3.135.156.101:8091/upload_file/'
 
 def upload_with_progress(file_path, url):
     total_size = os.path.getsize(file_path)
