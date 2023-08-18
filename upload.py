@@ -9,7 +9,7 @@ def upload_with_progress(file_path, url):
     uploaded_size = 0
 
     with open(file_path, 'rb') as f:
-        with requests.post(url, data=f, stream=True) as response:
+        with requests.post(url, data=f, stream=True, verify=False) as response:
             response.raise_for_status()
             for chunk in response.iter_content(chunk_size=8192):
                 uploaded_size += len(chunk)
