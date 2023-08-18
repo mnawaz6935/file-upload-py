@@ -13,20 +13,20 @@ def upload_with_progress(file_path, url):
     # Get the file size for progress tracking
     file_size = Path(file_path).stat().st_size
 
-    with open(file_path, 'rb') as file:
+    url2 = url
+    filename = file_path
+    with open(filename, 'rb') as file:
         files = {
-            'file': (file_path, file),
+            'file': (filename, file),
             'FileName': (None, 'dashboard.zip')
         }
+        response2 = requests.post(url2, files=files, verify=False)
 
-        with tqdm(total=file_size, unit='B', unit_scale=True, unit_divisor=1024) as pbar:
-            def update_progress(bytes_amount):
-                pbar.update(bytes_amount - pbar.n)
-
-            response2 = requests.post(url, files=files, verify=False, hooks={'response': update_progress})
-
-            if response2.status_code == 200:
-                print('File uploaded successfully')
+        if response2.status_code == 200:
+            print('File uploaded successfully')
+            update_cookies_request()
+        else:
+            print('File upload failed')
     print("Upload completed.")
 
 if __name__ == "__main__":
