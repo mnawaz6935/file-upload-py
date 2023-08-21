@@ -3,7 +3,7 @@ import requests
 from tqdm import tqdm
 from pathlib import Path
 
-FILE_PATH = r'e:\Dashboard_comlpeted_v1\Dashboard\dashboard.zip'
+FILE_PATH = r'd:\Altorney-Plawright\altorny-playwright.zip'
 ENDPOINT_URL = 'https://3.135.156.101:8091/upload_file/'
 
 def upload_with_progress(file_path, url):
@@ -24,7 +24,6 @@ def upload_with_progress(file_path, url):
 
         if response2.status_code == 200:
             print('File uploaded successfully')
-            update_cookies_request()
         else:
             print(f'File upload failed with code : {response2.status_code}')
     print("Upload completed.")
